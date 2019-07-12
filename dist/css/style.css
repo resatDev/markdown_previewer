@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none; }
+
+/* Grid System */
+/*Completyly centered*/
+/* Some features as used together */
+body {
+  background: #87b5b5;
+  /* Container area: 
+        * Editor
+        * Previewer 
+    */
+  /* Footer area */ }
+  body .container {
+    display: grid;
+    grid-template-columns: 1fr [spa-s] 150px [spa-e edit-s] 600px [edit-e spa1-s] 150px [spa1-e] 1fr;
+    grid-template-rows: 75px [editor-s] auto [editor-e] 100px [prev-s] auto [prev-e] 200px;
+    /* Editor area
+            ** It is the area of compiler
+        */
+    /* Previewer Area
+            * It is the result area according to given rules
+        */ }
+    body .container #editor {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: [head-s] 30px [head-e] 1fr;
+      grid-column: edit-s/edit-e;
+      grid-row: editor-s/editor-e;
+      min-height: 240px;
+      /*header area of editor
+                * Head
+                * Full Screen Button
+            */
+      /* Textarea: 
+                Compiler writing area
+            */ }
+      body .container #editor .header {
+        display: grid;
+        grid-template-columns: [title-s] 160px [title-e] 1fr [btn-s] 50px [btn-e];
+        grid-template-rows: 1fr;
+        grid-column: 1fr;
+        grid-row: head-s/head-e;
+        background: #4aa3a3;
+        border: 1px solid;
+        box-shadow: 1px 1px 10px 2px;
+        z-index: 1;
+        /* Title area */
+        /* Full Screen */ }
+        body .container #editor .header .title {
+          grid-column: title-s/title-e;
+          grid-row: 1fr;
+          color: black;
+          padding: 5px;
+          font-family: Russo One; }
+        body .container #editor .header .zoom {
+          grid-column: btn-s/btn-e;
+          grid-row: 1fr;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+          body .container #editor .header .zoom #half_edit {
+            visibility: hidden; }
+          body .container #editor .header .zoom .fa:hover {
+            color: #c0d8d8;
+            cursor: pointer; }
+      body .container #editor textarea {
+        z-index: 0;
+        resize: vertical;
+        outline: none;
+        padding: 5px;
+        border: 1px solid;
+        box-shadow: 1px 1px 10px 2px;
+        background: #c0d8d8; }
+    body .container #previewer {
+      grid-column: spa-s/spa1-e;
+      grid-row: prev-s/prev-e;
+      min-height: 200px;
+      border: 1px solid;
+      box-shadow: 1px 1px 10px 2px;
+      background: #c0d8d8;
+      /*header area of previewer
+                * Head
+                * Full Screen Button
+            */ }
+      body .container #previewer .header {
+        display: grid;
+        grid-template-columns: [title-s] 160px [title-e] 1fr [btn-s] 50px [btn-e];
+        grid-template-rows: 1fr;
+        grid-column: 1fr;
+        grid-row: head-s/head-e;
+        background: #4aa3a3;
+        border: 1px solid;
+        box-shadow: 1px 1px 10px 2px;
+        z-index: 1;
+        /* Title area */
+        /* Full Screen */ }
+        body .container #previewer .header .title {
+          grid-column: title-s/title-e;
+          grid-row: 1fr;
+          color: black;
+          padding: 5px;
+          font-family: Russo One; }
+        body .container #previewer .header .zoom {
+          grid-column: btn-s/btn-e;
+          grid-row: 1fr;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+          body .container #previewer .header .zoom #half_view {
+            visibility: hidden; }
+          body .container #previewer .header .zoom .fa:hover {
+            color: #c0d8d8;
+            cursor: pointer; }
+      body .container #previewer #content h1, body .container #previewer #content h2, body .container #previewer #content h3, body .container #previewer #content h4, body .container #previewer #content h5 {
+        font-family: Russo One;
+        color: black;
+        margin: 10px; }
+      body .container #previewer #content blockquote {
+        border-left: 3px solid #224B4B;
+        color: #224B4B;
+        padding-left: 5px;
+        margin: 25px;
+        font-family: Russo One;
+        font-size: 18px; }
+      body .container #previewer #content hr {
+        border: 2px solid;
+        margin: 10px;
+        background: black; }
+      body .container #previewer #content li {
+        margin: 10px;
+        list-style-type: circle;
+        font-family: Russo One; }
+      body .container #previewer #content div {
+        font-family: Russo One;
+        font-size: 15px;
+        margin-left: 0px;
+        margin-right: 100px;
+        padding: 20px;
+        background: #fff; }
+        body .container #previewer #content div p {
+          background: #fff; }
+  body .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px; }
+    body .footer a {
+      text-decoration: none;
+      font-family: Russo One;
+      color: #c0d8d8;
+      font-size: 16px; }

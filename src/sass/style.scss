@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* Grid System */
+@mixin grid-system($column, $row) {
+    display: grid;
+    grid-template-columns: $column;
+    grid-template-rows: $row;
+}
+@mixin grid-size($column, $row) {
+    grid-column: $column;
+    grid-row: $row;
+}
+
+/*Completyly centered*/
+@mixin completly_centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Some features as used together */
+$body_back_color: #87b5b5;
+$editor_back_color: #c0d8d8;
+$shadow :1px 1px 10px 2px;
+$border: 1px solid;
+$head_back_color: #4aa3a3;
+$title_font: Russo One;
+
+body{
+    background: $body_back_color;
+    /* Container area: 
+        * Editor
+        * Previewer 
+    */
+    .container{
+        @include grid-system(1fr [spa-s] 150px  [spa-e edit-s] 600px [edit-e spa1-s] 150px [spa1-e] 1fr, 75px [editor-s] auto [editor-e] 100px [prev-s] auto [prev-e] 200px);
+        /* Editor area
+            ** It is the area of compiler
+        */
+        #editor{
+            @include grid-system(1fr, [head-s] 30px [head-e] 1fr);
+            @include grid-size(edit-s/edit-e, editor-s/editor-e);
+            min-height: 240px;
+            /*header area of editor
+                * Head
+                * Full Screen Button
+            */
+            .header{
+                @include grid-system([title-s] 160px [title-e] 1fr [btn-s] 50px [btn-e], 1fr);
+                @include grid-size(1fr, head-s/head-e);
+                background: $head_back_color;
+                border: $border;
+                box-shadow: $shadow;
+                z-index: 1;
+                /* Title area */
+                .title{
+                    @include grid-size(title-s/title-e, 1fr);
+                    color: black;
+                    padding: 5px;
+                    font-family: $title_font;
+                }
+                /* Full Screen */
+                .zoom{
+                    @include grid-size(btn-s/btn-e, 1fr);
+                    @include completly_centered();
+                    #half_edit{
+                        visibility: hidden;
+                    }
+                    .fa:hover{
+                        color: #c0d8d8;
+                        cursor: pointer;
+                    }
+                }
+            }
+            /* Textarea: 
+                Compiler writing area
+            */
+            textarea{
+                z-index: 0;
+                resize: vertical;
+                outline: none;
+                padding: 5px;
+                border: 1px solid;
+                box-shadow: $shadow;
+                background: $editor_back_color;
+            }
+        }
+        /* Previewer Area
+            * It is the result area according to given rules
+        */
+        #previewer{
+            @include grid-size(spa-s/spa1-e, prev-s/prev-e);
+            min-height: 200px;
+            border: $border;
+            box-shadow: $shadow;
+            background: $editor_back_color;
+            /*header area of previewer
+                * Head
+                * Full Screen Button
+            */
+            .header{
+                @include grid-system([title-s] 160px [title-e] 1fr [btn-s] 50px [btn-e], 1fr);
+                @include grid-size(1fr, head-s/head-e);
+                background: $head_back_color;
+                border: $border;
+                box-shadow: $shadow;
+                z-index: 1;
+                /* Title area */
+                .title{
+                    @include grid-size(title-s/title-e, 1fr);
+                    color: black;
+                    padding: 5px;
+                    font-family: $title_font;
+                }
+                /* Full Screen */
+                .zoom{
+                    @include grid-size(btn-s/btn-e, 1fr);
+                    @include completly_centered();
+                    #half_view{
+                        visibility: hidden;
+                    }
+                    .fa:hover{
+                        color: #c0d8d8;
+                        cursor: pointer;
+                    }
+                }
+            }
+            #content{
+                h1, h2, h3, h4, h5{
+                    font-family: $title_font;
+                    color: black;
+                    margin: 10px;
+                }
+                blockquote{
+                    border-left: 3px solid #224B4B;
+                    color: #224B4B;
+                    padding-left: 5px;
+                    margin: 25px;
+                    font-family: $title_font;
+                    font-size: 18px;
+                }
+                hr{
+                    border: 2px solid;
+                    margin: 10px;
+                    background: black;
+                }
+                li{
+                    margin: 10px;
+                    list-style-type: circle;
+                    font-family: $title_font;
+                }
+                div{
+                    font-family: $title_font;
+                    font-size: 15px;
+                    margin-left: 0px;
+                    margin-right: 100px;
+                    padding: 20px;
+                    background: #fff;
+                    p{
+                        background: #fff;
+                    }
+                }
+            }
+        }
+    }
+    /* Footer area */
+    .footer{
+        @include completly_centered();
+        width: 100%;
+        height: 100px;
+        a{
+            text-decoration: none;
+            font-family: $title_font;
+            color: $editor_back_color;
+            font-size: 16px;
+        }
+    }
+
+}

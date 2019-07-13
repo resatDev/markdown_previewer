@@ -16,9 +16,12 @@ body {
   body .container {
     display: grid;
     grid-template-columns: 1fr [spa-s] 150px [spa-e edit-s] 600px [edit-e spa1-s] 150px [spa1-e] 1fr;
-    grid-template-rows: 75px [editor-s] auto [editor-e] 100px [prev-s] auto [prev-e] 200px;
+    grid-template-rows: 75px [editor-s] auto [editor-e conv-s] 100px [conv-e prev-s] auto [prev-e] 200px;
     /* Editor area
             ** It is the area of compiler
+        */
+    /*
+            Converting button area
         */
     /* Previewer Area
             * It is the result area according to given rules
@@ -74,6 +77,24 @@ body {
         border: 1px solid;
         box-shadow: 1px 1px 10px 2px;
         background: #c0d8d8; }
+    body .container #conv {
+      grid-column: edit-s/edit-e;
+      grid-row: conv-s/conv-e;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      body .container #conv #convert {
+        width: 100px;
+        height: 50px;
+        font-family: Russo One;
+        border: none;
+        border-radius: 10px;
+        background: #c0d8d8;
+        color: #87b5b5; }
+      body .container #conv #convert:hover {
+        background: #87b5b5;
+        color: #c0d8d8;
+        cursor: pointer; }
     body .container #previewer {
       grid-column: spa-s/spa1-e;
       grid-row: prev-s/prev-e;
@@ -136,7 +157,7 @@ body {
       body .container #previewer #content div {
         font-family: Russo One;
         font-size: 15px;
-        margin-left: 0px;
+        margin-left: 10px;
         margin-right: 100px;
         padding: 20px;
         background: #fff; }
